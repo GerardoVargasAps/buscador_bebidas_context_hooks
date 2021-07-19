@@ -13,7 +13,7 @@ const Formulario = () => {
 
     //pasamos el context a useContext
     const { categorias } = useContext(CategoriasContext)
-    const { saveBusqueda } = useContext(RecetasContext)
+    const { saveBusqueda, setConsultar } = useContext(RecetasContext)
   
     //funcion para leer los contenidos de los inputs
     const getDatos = e => {
@@ -31,6 +31,7 @@ const Formulario = () => {
             onSubmit={e => {
                 e.preventDefault()
                 saveBusqueda(busqueda)
+                setConsultar(true)
             }}
         >
             <fieldset className="text-center">

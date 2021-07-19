@@ -10,13 +10,19 @@ const RecetasProvider = (props) => {
         nombre: '',
         categoria: ''
     })
+    const [consultar, setConsultar] = useState(false)
 
     //agregamos un escuchador para que se ejecute la API cuando cambiemos algo en la busqueda
     useEffect(() => {
         const getRecetas = async () => {
-            const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${busqueda.nombre}&c=${busqueda.categoria}`
+            if(consultar) {
+                const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${busqueda.nombre}&c=${busqueda.categoria}`
+                const resultado = await axios.get(url)
+                //console.log(resultado.data.drinks)
+                setRecetas(resultado.data.drinks)
+            }
         }
-        //getRecetas()
+        getRecetas()
     }, [busqueda])
 
 
@@ -24,7 +30,8 @@ const RecetasProvider = (props) => {
     return (
         <RecetasContext.Provider
             value={{
-                saveBusqueda
+                saveBusqueda,
+                setConsultar
             }}
         >
             {props.children}
