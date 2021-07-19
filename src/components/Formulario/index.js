@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 
 //importamos el context que creamos anteriormente
 import { CategoriasContext } from '../../context/CategoriasContext';
+import { RecetasContext } from '../../context/RecetasContext';
 
 const Formulario = () => {
 
@@ -12,6 +13,7 @@ const Formulario = () => {
 
     //pasamos el context a useContext
     const { categorias } = useContext(CategoriasContext)
+    const { saveBusqueda } = useContext(RecetasContext)
   
     //funcion para leer los contenidos de los inputs
     const getDatos = e => {
@@ -26,6 +28,10 @@ const Formulario = () => {
     return ( 
         <form
             className="col-12"
+            onSubmit={e => {
+                e.preventDefault()
+                saveBusqueda(busqueda)
+            }}
         >
             <fieldset className="text-center">
                 <legend>Busca bebidas por Categoria o Ingredientes</legend>
