@@ -11,7 +11,10 @@ const ListaRecetas = () => {
         <div className="row mt-5">
             {
                 recetas.map(receta => (
-                    <Receta receta={receta} />
+                    <Receta 
+                        key={receta.idDrink}
+                        receta={receta} 
+                    />
                 ))
             }
         </div>
