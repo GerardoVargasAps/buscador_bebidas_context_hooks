@@ -23,8 +23,6 @@ const Formulario = () => {
         })
     }
 
-    console.log('state >>>', busqueda)
-
     return ( 
         <form
             className="col-12"
