@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { createContext, useState, useEffect } from 'react';
 
 //Creamos el Context
-export const CategoriasContext = createContext()
+export const CategoriasContext  = createContext()
 
 //Creamos nuestro Provider, (es de donde saldran nuestros datos (state) y nuestras funciones)
 //se agregan props ya que al usarlo en un lgar hay que hacer referencia a los componentes hijos (props.children)
