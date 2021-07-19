@@ -11,6 +11,15 @@ const RecetasProvider = (props) => {
         categoria: ''
     })
 
+    //agregamos un escuchador para que se ejecute la API cuando cambiemos algo en la busqueda
+    useEffect(() => {
+        const getRecetas = async () => {
+            const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${busqueda.nombre}&c=${busqueda.categoria}`
+        }
+        //getRecetas()
+    }, [busqueda])
+
+
     //retornamos los datos
     return (
         <RecetasContext.Provider
