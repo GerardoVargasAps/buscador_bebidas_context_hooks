@@ -46,7 +46,7 @@ const Receta = ({ receta }) => {
     }
 
     //extraemos los valores del Modal Context
-    const { recetaInfo, setIdReceta } = useContext(ModalContext)
+    const { recetaInfo, setIdReceta, setReceta } = useContext(ModalContext)
 
     console.log('recetaInfo >><', recetaInfo)
 
@@ -72,6 +72,7 @@ const Receta = ({ receta }) => {
                     open={open}
                     onClose={() => {
                         setIdReceta(null)
+                        setReceta({})
                         handleClose()
                     }}
                     aria-labelledby="simple-modal-title"
