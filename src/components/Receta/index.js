@@ -21,7 +21,7 @@ function getModalStyle(){
 const useStyles = makeStyles(theme => ({
     paper: {
         position: 'absolute',
-        width: 600,
+        width: '50vh',
         backgroundColor: theme.palette.background.paper,
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2,4,3)
@@ -45,10 +45,10 @@ const Receta = ({ receta }) => {
         setOpen(false)
     }
 
-    console.log('modal >>>', open)
-
     //extraemos los valores del Modal Context
-    const { setIdReceta } = useContext(ModalContext)
+    const { recetaInfo, setIdReceta } = useContext(ModalContext)
+
+    console.log('recetaInfo >><', recetaInfo)
 
     return ( 
        <div className="col-md-4 mb-3">
@@ -78,8 +78,12 @@ const Receta = ({ receta }) => {
                     aria-describedby="simple-modal-description"
                 >
                     <div style={modalStyle} className={classes.paper}>
-                        <h1 className="text-secondary">Desde modal</h1>
-
+                        <h2>{recetaInfo.strDrink}</h2>
+                        <h3 className="mt-4">Instrucciones</h3>
+                        <p>
+                            {recetaInfo.strInstructions}
+                        </p>
+                        <img className="img-fluid my-4" src={recetaInfo.strDrinkThumb} alt={`Imagen de ${recetaInfo.strDrink}`} />
                     </div>
                 </Modal>
             </div>
